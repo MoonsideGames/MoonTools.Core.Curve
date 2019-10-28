@@ -36,29 +36,29 @@ namespace Tests
         }
 
         [Test]
-        public void FirstDerivative()
+        public void Velocity()
         {
             var p0 = new Vector3(-4, -4, -3);
             var p1 = new Vector3(-2, 4, 0);
             var p2 = new Vector3(2, -4, 3);
             var p3 = new Vector3(4, 4, 0);
 
-            CubicBezierCurve3D.FirstDerivative(p0, p1, p2, p3, 0.5f).Should().BeEquivalentTo(new Vector3(9, 0, 4.5f));
-            CubicBezierCurve3D.FirstDerivative(p0, p1, p2, p3, 0.25f).Should().BeEquivalentTo(new Vector3(8.25f, 6f, 7.875f));
-            CubicBezierCurve3D.FirstDerivative(p0, p1, p2, p3, 0.75f).Should().BeEquivalentTo(new Vector3(8.25f, 6f, -1.125f));
+            CubicBezierCurve3D.Velocity(p0, p1, p2, p3, 0.5f).Should().BeEquivalentTo(new Vector3(9, 0, 4.5f));
+            CubicBezierCurve3D.Velocity(p0, p1, p2, p3, 0.25f).Should().BeEquivalentTo(new Vector3(8.25f, 6f, 7.875f));
+            CubicBezierCurve3D.Velocity(p0, p1, p2, p3, 0.75f).Should().BeEquivalentTo(new Vector3(8.25f, 6f, -1.125f));
         }
 
         [Test]
-        public void FirstDerivativeNormalized()
+        public void VelocityNormalized()
         {
             var p0 = new Vector3(-4, -4, -3);
             var p1 = new Vector3(-2, 4, 0);
             var p2 = new Vector3(2, -4, 3);
             var p3 = new Vector3(4, 4, 0);
 
-            CubicBezierCurve3D.FirstDerivative(p0, p1, p2, p3, 3, 2, 4).Should().BeEquivalentTo(new Vector3(9, 0, 4.5f));
-            CubicBezierCurve3D.FirstDerivative(p0, p1, p2, p3, 2, 1, 5).Should().BeEquivalentTo(new Vector3(8.25f, 6f, 7.875f));
-            CubicBezierCurve3D.FirstDerivative(p0, p1, p2, p3, 11, 2, 14).Should().BeEquivalentTo(new Vector3(8.25f, 6f, -1.125f));
+            CubicBezierCurve3D.Velocity(p0, p1, p2, p3, 3, 2, 4).Should().BeEquivalentTo(new Vector3(9, 0, 4.5f));
+            CubicBezierCurve3D.Velocity(p0, p1, p2, p3, 2, 1, 5).Should().BeEquivalentTo(new Vector3(8.25f, 6f, 7.875f));
+            CubicBezierCurve3D.Velocity(p0, p1, p2, p3, 11, 2, 14).Should().BeEquivalentTo(new Vector3(8.25f, 6f, -1.125f));
         }
     }
 

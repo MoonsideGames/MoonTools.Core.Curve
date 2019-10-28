@@ -21,9 +21,9 @@ namespace MoonTools.Core.Curve
 
         public Vector3 Point(float t, float minT, float maxT) => Point(p0, p1, p2, p3, t, minT, maxT);
 
-        public Vector3 Velocity(float t) => FirstDerivative(p0, p1, p2, p3, t);
+        public Vector3 Velocity(float t) => Velocity(p0, p1, p2, p3, t);
 
-        public Vector3 Velocity(float t, float minT, float maxT) => FirstDerivative(p0, p1, p2, p3, t, minT, maxT);
+        public Vector3 Velocity(float t, float minT, float maxT) => Velocity(p0, p1, p2, p3, t, minT, maxT);
 
         public static Vector3 Point(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)
         {
@@ -37,10 +37,10 @@ namespace MoonTools.Core.Curve
 
         public static Vector3 Point(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t, float minT, float maxT)
         {
-            return Point(p0, p1, p2, p3, Normalized(t, minT, maxT));
+            return Point(p0, p1, p2, p3, TimeHelper.Normalized(t, minT, maxT));
         }
 
-        public static Vector3 FirstDerivative(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)
+        public static Vector3 Velocity(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)
         {
             if (t < 0 || t > 1) { throw new System.ArgumentException($"{t} is an invalid value. Must be between 0 and 1"); }
 
@@ -49,11 +49,9 @@ namespace MoonTools.Core.Curve
                     3f * t * t * (p3 - p2);
         }
 
-        public static Vector3 FirstDerivative(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t, float minT, float maxT)
+        public static Vector3 Velocity(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t, float minT, float maxT)
         {
-            return FirstDerivative(p0, p1, p2, p3, Normalized(t, minT, maxT));
+            return Velocity(p0, p1, p2, p3, TimeHelper.Normalized(t, minT, maxT));
         }
-
-        private static float Normalized(float t, float minT, float maxT) => ((t - minT)) / (maxT - minT);
     }
 }
