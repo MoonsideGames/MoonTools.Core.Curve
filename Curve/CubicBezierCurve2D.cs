@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+using System.Numerics;
 using MoonTools.Core.Curve.Extensions;
 
 namespace MoonTools.Core.Curve

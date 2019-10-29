@@ -2,8 +2,8 @@ using NUnit.Framework;
 using FluentAssertions;
 
 using MoonTools.Core.Curve;
-using Microsoft.Xna.Framework;
 using System;
+using System.Numerics;
 
 namespace Tests
 {
