@@ -27,7 +27,7 @@ namespace MoonTools.Core.Curve
 
         public static Vector3 Point(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)
         {
-            if (t < 0 || t > 1) { throw new System.ArgumentException($"{t} is an invalid value. Must be between 0 and 1"); }
+            ArgumentChecker.CheckT(t);
 
             return (1f - t) * (1f - t) * (1f - t) * p0 +
                     3f * (1f - t) * (1f - t) * t * p1 +
@@ -37,12 +37,13 @@ namespace MoonTools.Core.Curve
 
         public static Vector3 Point(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t, float minT, float maxT)
         {
+            ArgumentChecker.CheckT(t, minT, maxT);
             return Point(p0, p1, p2, p3, TimeHelper.Normalized(t, minT, maxT));
         }
 
         public static Vector3 Velocity(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)
         {
-            if (t < 0 || t > 1) { throw new System.ArgumentException($"{t} is an invalid value. Must be between 0 and 1"); }
+            ArgumentChecker.CheckT(t);
 
             return 3f * (1f - t) * (1f - t) * (p1 - p0) +
                     6f * (1f - t) * t * (p2 - p1) +
@@ -51,6 +52,7 @@ namespace MoonTools.Core.Curve
 
         public static Vector3 Velocity(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t, float minT, float maxT)
         {
+            ArgumentChecker.CheckT(t, minT, maxT);
             return Velocity(p0, p1, p2, p3, TimeHelper.Normalized(t, minT, maxT));
         }
     }
