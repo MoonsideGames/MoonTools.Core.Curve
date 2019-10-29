@@ -1,5 +1,8 @@
 # MoonTools.Core.Curve
 
+[![NuGet Badge](https://buildstats.info/nuget/MoonTools.Core.Curve)](https://www.nuget.org/packages/MoonTools.Core.Curve/)
+[![CircleCI](https://circleci.com/gh/MoonsideGames/MoonTools.Core.Curve.svg?style=svg)](https://circleci.com/gh/MoonsideGames/MoonTools.Core.Curve)
+
 Implements quadratic and cubic Bezier curves in 2D and 3D.
 
 ## Example
