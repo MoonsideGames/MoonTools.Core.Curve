@@ -144,5 +144,45 @@ namespace Tests
 
             myCurve.Invoking(x => x.Velocity(15, 2, 5)).Should().Throw<ArgumentException>();
         }
+
+        [Test]
+        public void Equals()
+        {
+            var myCurve = new CubicBezierCurve2D(
+                new Vector2(-4, -4),
+                new Vector2(-2, 4),
+                new Vector2(2, -4),
+                new Vector2(4, 4)
+            );
+
+            var otherCurve = new CubicBezierCurve2D(
+                new Vector2(-4, -4),
+                new Vector2(-2, 4),
+                new Vector2(2, -4),
+                new Vector2(4, 4)
+            );
+
+            (myCurve == otherCurve).Should().BeTrue();
+        }
+
+        [Test]
+        public void NotEquals()
+        {
+            var myCurve = new CubicBezierCurve2D(
+                new Vector2(-9, -4),
+                new Vector2(-2, 4),
+                new Vector2(2, -4),
+                new Vector2(4, 4)
+            );
+
+            var otherCurve = new CubicBezierCurve2D(
+                new Vector2(-4, -4),
+                new Vector2(-2, 4),
+                new Vector2(2, -4),
+                new Vector2(4, 4)
+            );
+
+            (myCurve != otherCurve).Should().BeTrue();
+        }
     }
 }

@@ -151,5 +151,31 @@ namespace Tests
             myCurve.Point(0.75f).Should().BeEquivalentTo(myCubicCurve.Point(0.75f));
             myCurve.Point(1f).Should().BeEquivalentTo(myCubicCurve.Point(1f));
         }
+
+        [Test]
+        public void Equals()
+        {
+            var p0 = new Vector3(-4, -4, -3);
+            var p1 = new Vector3(2, -4, 3);
+            var p2 = new Vector3(4, 4, 0);
+
+            var myCurve = new QuadraticBezierCurve3D(p0, p1, p2);
+            var otherCurve = new QuadraticBezierCurve3D(p0, p1, p2);
+
+            (myCurve == otherCurve).Should().BeTrue();
+        }
+
+        [Test]
+        public void NotEquals()
+        {
+            var p0 = new Vector3(-4, -4, -3);
+            var p1 = new Vector3(2, -4, 3);
+            var p2 = new Vector3(4, 4, 0);
+
+            var myCurve = new QuadraticBezierCurve3D(p0, p1, p2);
+            var otherCurve = new QuadraticBezierCurve3D(new Vector3(0, -4, -3), p1, p2);
+
+            (myCurve != otherCurve).Should().BeTrue();
+        }
     }
 }
